@@ -15,24 +15,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//index - Show all data --> listings
-//show - Show single dta --> listing
-//create - Show form to create new --> listing
-//store - Store Data --> New listing
-//edit Show form to edit data
-//update -- Update data
-//destroy -- Delete data
-
+//index - Show 
+//index -show all data -> listings
+//show - show single data --> listing
+//create - show for to create new --> listing
+//store - store data --> new listing
+//editt - show form to edit data
+//updatte - update
+//destroy - delete a data
 
 //ALL Listing
 Route::get('/', [ListingController::class, 'index']);
 
 //Show Create Form
-Route::get('/listings/create',[ListingController::class, 'create']);
+Route::get('listings/create', [ListingController::class, 'create']);
 
 //Store Listing Data
-Route::post('/listings',[ListingController::class, 'store']);
+Route::post('listings', [ListingController::class, 'store']);
+
+//Show Edit Form
+Route::get('listings/{listing}/edit', [ListingController::class, 'edit']);
+
+//update listing
+Route::put('listings/{listing}', [ListingController::class, 'update']);
 
 //Single Listing
-Route::get('/listings/{listing}',  [ListingController::class, 'show']);
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
+
+// ($id){
+//     $listing = Listing::find($id);
+
+//     if($listing) {
+//  return view('listing', [
+//         'listing' => $listing
+//     ]);
+// } else {
+//     abort('404');
+// }
+// });
